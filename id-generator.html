@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background-color: #eaeaea;
+      }
+
+      #main-container {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+      }
+
+      #id-bg {
+        width: 750px;
+        height: 420px;
+        object-fit: cover;
+        z-index: -10;
+      }
+
+      .person-image {
+        position: absolute;
+        top: 53%;
+        left: 16%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 160px;
+        border: 1px solid grey;
+        border-radius: 5px;
+      }
+
+      .label-container {
+        position: absolute;
+        width: 600px;
+        top: 50%;
+        left: 65%;
+        translate: -50% -50%;
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        gap: 10px;
+        flex-direction: column;
+      }
+
+      .labels {
+        font-family: "Segoe UI";
+        font-weight: bold;
+        font-size: 1.1em;
+      }
+
+      .actual {
+        margin-left: 10px;
+      }
+
+      .aadhar-number {
+        position: absolute;
+        top: 75%;
+        left: 49%;
+        translate: -50% -50%;
+        font-family: "Segoe UI";
+        font-weight: bold;
+        font-size: 1.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-container">
+      <img src="./aadhar_bg.png" id="id-bg" />
+      <div class="person-image"></div>
+      <div class="label-container">
+        <div id="name-label" class="labels">
+          Name:<span class="actual" id="actual-name">Samarth Tumdi</span>
+        </div>
+        <div id="dob-label" class="labels">
+          DOB:<span class="actual" id="actual-dob">01/02/2003</span>
+        </div>
+        <div id="gender-label" class="labels">
+          Gender:<span class="actual" id="actual-gender">Male</span>
+        </div>
+      </div>
+      <div class="aadhar-number" id="aadhar-no">6202 1482 1016</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+    <script src="./id-generator.js"></script>
+  </body>
+</html>
