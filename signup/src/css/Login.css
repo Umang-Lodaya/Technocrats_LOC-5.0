@@ -112,3 +112,19 @@
   top: 0; left: 0;
   visibility: hidden;
 }
+
+#uploaded-filename {
+  color: white;
+  text-decoration: underline;
+}
+
+#pwd-div {
+  position: relative;
+}
+
+.eyecon {
+  position: absolute;
+  width: 30px; height: 30px;
+  top: 50%; left: 90%;
+  transform: translateY(-50%);
+}
