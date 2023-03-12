@@ -10,21 +10,17 @@ import { ref, uploadBytes } from "firebase/storage";
 import { v4 } from 'uuid';
 
 var SignupLanding = () => {
-  const invokerRef = useRef();
-  const fileTagRef = useRef();
+  // const invokerRef = useRef();
+  // const fileTagRef = useRef();
 
   const passwordBox = useRef();
   const normalEyeRef = useRef();
   const slashEyeRef = useRef();
   const [imageUpload, setImageUpload] = useState(null);
 
-  function invokeFileUpload(fileTagRef) {
-    fileTagRef.current.click();
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then(() => {
-      console.log("Document Uploaded!");
-    })
-  }
+  // function invokeFileUpload(fileTagRef) {
+  //   fileTagRef.current.click();
+  // }
 
   function handleEyecon(event, inputBoxRef, otherEyeRef) {
     event.target.style.display = 'none';
@@ -57,9 +53,17 @@ var SignupLanding = () => {
   const digitalIdentifyRef = collection(db, "digital-identify");
 
   const createDI = async () => {
-    // await addDoc(digitalIdentifyRef,  userDeets.dob, userDeets.email, userDeets.fullName, userDeets.uid);
-    await addDoc(digitalIdentifyRef,  userDeets);
+    await addDoc(digitalIdentifyRef, userDeets);
   }
+
+  const uploadImage = () => {
+    if(imageUpload === null)  return;
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then(() => {
+      console.log("Document Uploaded!");
+    })
+  }
+
 
   return (
     <div id='main-container'>
@@ -115,17 +119,18 @@ var SignupLanding = () => {
       </div>
       <div className='right-side'>
         <div className='right-inner'>
-          <input ref={fileTagRef} type="file" id="input-file-upload" accept='image/png, image/jpg' onInput={(e) => {
+          {/* <input ref={fileTagRef} type="file" id="input-file-upload" accept='image/png, image/jpg' onInput={(e) => {
             document.getElementById("uploaded-filename").innerText = e.target.files[0].name;
-          }} />
+          }} /> */}
           <div className='right-sub-div-1'>
             <label htmlFor='invoker'><i>Upload Identity Proof</i></label>
-            <button ref={invokerRef} id="invoker" name="invoker" onClick={() => invokeFileUpload(fileTagRef)}>Upload!</button>
+            {/* <button ref={invokerRef} id="invoker" name="invoker" onClick={() => invokeFileUpload(fileTagRef)}>Upload!</button> */}
+            <input type="file" onChange={e => setImageUpload(e.target.files[0])} />
             <p id="uploaded-filename"></p>
           </div>
         </div>
       </div>
-      <input type='submit' id='submit' value={"Submit"} onClick={() => { registerUser(); createDI(); setUserDeets({}) }}></input>
+      <input type='submit' id='submit' value={"Submit"} onClick={() => { registerUser(); createDI(); setUserDeets({}); uploadImage() }}></input>
     </div>
   )
 }
