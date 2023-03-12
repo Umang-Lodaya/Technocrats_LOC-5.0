@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; width: 30%; height: 50vh; border: 1px solid black;">
+            <form action = "/verifyDocument" method = "post" enctype="multipart/form-data">
+                <div style="display: flex; justify-content: space-between;; align-items: center; width: 70%; margin: 10px;">
+                    <label htmlFor='name-input'>Full Name: </label>
+                    <input type='text' id='name-input' name='name' className='text-input'></input>
+                </div>
+                <div style="display: flex; justify-content: space-between;; align-items: center; width: 70%; margin: 10px;">
+                    <label htmlFor='dob-select'>Date of Birth: </label>
+                    <input type="date" id="dob-select" name="dob" value="2018-07-22" />
+                </div>
+                <div style="display: flex; justify-content: space-between;; align-items: center; width: 70%; margin: 10px;">
+                    <label htmlFor='gender'>Gender:</label>
+                    <div>
+                        <label><input type="radio" id="gender-male" name="gender" value={"Male"} />Male</label>
+                        <label><input type="radio" id="gender-female" name="gender" value={"Female"} />Female</label>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 70%; margin: 10px;">
+                    <label htmlFor='uid-input'>Identity Proof ID:</label>
+                    <input type='text' id='uid-input' name='uid' className='text-input'></input>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 70%; margin: 10px;">
+                    <input type="file" name="identity" /> 
+                </div>
+    
+                <div>
+                    <input type="submit" value="submit">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</body>
+
+</html>
